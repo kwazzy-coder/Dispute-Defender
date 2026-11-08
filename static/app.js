@@ -741,7 +741,7 @@
     const ai = $("#ai-pill");
     ai.textContent = c.ai_enabled ? `AI: ${c.model}` : "AI: rules (no API key)";
     ai.className = `pill ${c.ai_enabled ? "brand" : ""}`;
-    $("#btn-simulate").hidden = c.mode !== "mock";
+    $("#btn-simulate").hidden = false;
     $("#btn-reset").hidden = c.mode !== "mock";
     $("#autopilot-dot").className = `dot ${c.settings.autopilot ? "on" : ""}`;
   }
