@@ -6,12 +6,12 @@ Built for the *Build What's Next with PayPal and AI* hackathon. It uses the PayP
 
 ![Dispute Defender dashboard](docs/screenshots/dashboard.png)
 
-> 🎥 **Demo video:** _add your YouTube link here_ · 🌐 **Live demo:** _add your Render URL here_ (password for actions: _in the submission_)
+> Demo video: _add your YouTube link here_ · Live demo: _add your Render URL here_ (password for actions: _in the submission_)
 
 <!-- After pushing to GitHub, replace OWNER/REPO to show the CI badge: -->
 <!-- ![tests](https://github.com/OWNER/REPO/actions/workflows/tests.yml/badge.svg) -->
 
-> ⏳ **Hosted on Render's free plan:** if the demo has been idle, the first page load can take about 50 seconds while the server wakes up. It's not broken, just asleep.
+> Hosted on Render's free plan: if the demo has been idle, the first page load can take about 50 seconds while the server wakes up. It's not broken, just asleep.
 
 ---
 
@@ -30,23 +30,23 @@ Most small sellers don't have time for this. They either give up or submit weak 
 
 | | |
 |---|---|
-| 🛡️ **Prevents disputes (Dispute Radar)** | Watches orders for early warning signs: a parcel stalled in transit, a customer waiting for a reply ("I'll open a PayPal case"), or an emailed request to ship somewhere else, often to a parcel forwarder (a classic account-takeover pattern). Claude drafts the reply in the customer's language. You send it, hold the order or reship with one click. |
-| 🔔 **Picks up every dispute** | A PayPal `CUSTOMER.DISPUTE.CREATED` webhook (signature-verified) triggers an investigation automatically. An optional Slack or Zapier webhook and browser notifications alert you to new disputes and deadlines under 48h. |
-| 🧾 **Works from PayPal alone** | No store integration? The agent rebuilds the order from PayPal: the capture (with its **Seller Protection** status), the checkout order (items, ship-to, payer), the tracking you added, and the payer's history from Transaction Search. Carrier scans come from **EasyPost** (optional, free test mode). |
-| 🕵️ **Investigates like an analyst** | An AI agent (Gemini or Claude) uses 8 tools: the PayPal dispute, PayPal Transaction Search, the store's order database, carrier tracking, helpdesk history, customer history, the product listing and policies, and attached photos. You can watch each tool call live. |
-| 👁️ **Looks at the photos** | Not-as-described disputes are won or lost on photos. The agent opens the buyer's photos (helpdesk attachments, or documents on the PayPal dispute) with Claude's vision. It describes what they actually show, such as cracks consistent with impact or one mug darker than the rest, and doesn't take the buyer's word for it. |
-| ⚖️ **Recommends honestly** | **FIGHT**, **OFFER** (for example a partial refund) or **ACCEPT**, with a win probability, the key facts (each tagged with its source and which side it supports), risks, missing evidence, and a process fix to prevent the next dispute. It tells you when you'd lose. |
-| ✍️ **Drafts the response** | It writes a factual statement to PayPal that cites dates and IDs, a friendly message to the buyer, PayPal `provide-evidence` items (tracking info, refund IDs) and a PDF evidence packet. |
-| ✅ **Human in the loop** | One click to submit evidence, send an offer, accept the claim or message the buyer through PayPal. Every money-moving action asks for confirmation. |
-| 🤖 **Guarded autopilot** | Optional. Evidence is auto-submitted only when the agent recommends fighting **and** the win probability and amount are inside limits you set. Everything else waits for you. |
-| 💬 **Ask the agent** | What-if chat inside each dispute: *"What if I offer $30 instead?"* The agent answers from the evidence and gives a revised win chance and action. |
-| 🚚 **Gets money back from the carrier** | When a damage or loss dispute is best accepted, the agent drafts the carrier claim (tracking, value, the damage scan, photos) so the loss lands on the carrier, not the shop. |
-| 🌍 **Speaks the buyer's language** | Buyer messages are translated on demand, and replies to buyers are drafted in their language. Statements to PayPal stay in English. |
-| 💰 **Shows the payoff** | The "Impact so far" panel shows money recovered, money kept through offers, losing fights avoided, disputes headed off by Radar, and time saved. Time saved is an estimate, based on an adjustable assumption about how long a case takes by hand. |
-| 📈 **Finds patterns** | A cross-dispute analysis surfaces root causes (packaging, listings, address changes) with concrete fixes. |
-| 📊 **AG Grid triage board** | Disputes sorted by deadline, with custom cell renderers for deadlines, verdicts and win-chance bars, status filter chips, quick search, CSV export, remembered column layout and full keyboard navigation. A chart above it shows where the money at risk stands by verdict. |
-| 🎯 **Keeps score** | Each PayPal ruling is compared with the agent's predicted win chance: rulings called correctly, plus a Brier score. `scripts/eval_agent.py` runs the agent against 8 labelled scenarios. |
-| 🧩 **Works from other agents (MCP)** | `mcp_server.py` exposes Dispute Defender to Claude Desktop or any MCP client, so you can ask "what's due this week?" or "fight Daniel's chargeback" in conversation. Actions that move money are marked destructive, so the client asks you first. |
+| **Prevents disputes (Dispute Radar)** | Watches orders for early warning signs: a parcel stalled in transit, a customer waiting for a reply ("I'll open a PayPal case"), or an emailed request to ship somewhere else, often to a parcel forwarder (a classic account-takeover pattern). Claude drafts the reply in the customer's language. You send it, hold the order or reship with one click. |
+| **Picks up every dispute** | A PayPal `CUSTOMER.DISPUTE.CREATED` webhook (signature-verified) triggers an investigation automatically. An optional Slack or Zapier webhook and browser notifications alert you to new disputes and deadlines under 48h. |
+| **Works from PayPal alone** | No store integration? The agent rebuilds the order from PayPal: the capture (with its **Seller Protection** status), the checkout order (items, ship-to, payer), the tracking you added, and the payer's history from Transaction Search. Carrier scans come from **EasyPost** (optional, free test mode). |
+| **Investigates like an analyst** | An AI agent (Gemini or Claude) uses 8 tools: the PayPal dispute, PayPal Transaction Search, the store's order database, carrier tracking, helpdesk history, customer history, the product listing and policies, and attached photos. You can watch each tool call live. |
+| **Looks at the photos** | Not-as-described disputes are won or lost on photos. The agent opens the buyer's photos (helpdesk attachments, or documents on the PayPal dispute) with Claude's vision. It describes what they actually show, such as cracks consistent with impact or one mug darker than the rest, and doesn't take the buyer's word for it. |
+| **Recommends honestly** | **FIGHT**, **OFFER** (for example a partial refund) or **ACCEPT**, with a win probability, the key facts (each tagged with its source and which side it supports), risks, missing evidence, and a process fix to prevent the next dispute. It tells you when you'd lose. |
+| **Drafts the response** | It writes a factual statement to PayPal that cites dates and IDs, a friendly message to the buyer, PayPal `provide-evidence` items (tracking info, refund IDs) and a PDF evidence packet. |
+| **Human in the loop** | One click to submit evidence, send an offer, accept the claim or message the buyer through PayPal. Every money-moving action asks for confirmation. |
+| **Guarded autopilot** | Optional. Evidence is auto-submitted only when the agent recommends fighting **and** the win probability and amount are inside limits you set. Everything else waits for you. |
+| **Ask the agent** | What-if chat inside each dispute: *"What if I offer $30 instead?"* The agent answers from the evidence and gives a revised win chance and action. |
+| **Gets money back from the carrier** | When a damage or loss dispute is best accepted, the agent drafts the carrier claim (tracking, value, the damage scan, photos) so the loss lands on the carrier, not the shop. |
+| **Speaks the buyer's language** | Buyer messages are translated on demand, and replies to buyers are drafted in their language. Statements to PayPal stay in English. |
+| **Shows the payoff** | The "Impact so far" panel shows money recovered, money kept through offers, losing fights avoided, disputes headed off by Radar, and time saved. Time saved is an estimate, based on an adjustable assumption about how long a case takes by hand. |
+| **Finds patterns** | A cross-dispute analysis surfaces root causes (packaging, listings, address changes) with concrete fixes. |
+| **AG Grid triage board** | Disputes sorted by deadline, with custom cell renderers for deadlines, verdicts and win-chance bars, status filter chips, quick search, CSV export, remembered column layout and full keyboard navigation. A chart above it shows where the money at risk stands by verdict. |
+| **Keeps score** | Each PayPal ruling is compared with the agent's predicted win chance: rulings called correctly, plus a Brier score. `scripts/eval_agent.py` runs the agent against 8 labelled scenarios. |
+| **Works from other agents (MCP)** | `mcp_server.py` exposes Dispute Defender to Claude Desktop or any MCP client, so you can ask "what's due this week?" or "fight Daniel's chargeback" in conversation. Actions that move money are marked destructive, so the client asks you first. |
 
 ![Investigation drawer](docs/screenshots/investigation.png)
 
@@ -56,7 +56,7 @@ Most small sellers don't have time for this. They either give up or submit weak 
 
 ### The six sample disputes (offline demo & benchmark data)
 
-*Note: These six pre-loaded disputes belong to a fictional shop (*Kiln & Clay Studio*) and are used for offline demoing and benchmark testing. When connected to PayPal credentials or webhooks, Dispute Defender fetches and investigates live PayPal disputes.* Each sample dispute tests a distinct type of AI reasoning:
+*Note: These six pre-loaded disputes belong to a fictional shop (Kiln & Clay Studio) and are used for offline demoing and benchmark testing. When connected to PayPal credentials or webhooks, Dispute Defender fetches and investigates live PayPal disputes.* Each sample dispute tests a distinct type of AI reasoning:
 
 | Dispute | Claim | What the evidence shows | Verdict |
 |---|---|---|---|
@@ -67,7 +67,7 @@ Most small sellers don't have time for this. They either give up or submit weak 
 | Ethan, $98 mug set | Not as described | His photo shows one mug clearly darker; the listing discloses handmade colour variation; he "loves them" otherwise | **Offer** a $24.50 refund for one mug |
 | Hannah, $36 planter | Duplicate charge | Two separate orders, 25 minutes apart, shipped to two addresses with a gift note | **Fight** |
 
-**⚡ Simulate dispute** sends new disputes through the same webhook path. One is a stalled package (recommend a replacement and a message to the buyer). The other is an account-takeover pattern where the item was shipped to a re-routed address, so Seller Protection probably doesn't apply (recommend accepting).
+**Simulate dispute** sends new disputes through the same webhook path. One is a stalled package (recommend a replacement and a message to the buyer). The other is an account-takeover pattern where the item was shipped to a re-routed address, so Seller Protection probably doesn't apply (recommend accepting).
 
 ---
 
@@ -116,7 +116,7 @@ The two pills in the header always show which mode you're in, for example `Demo 
 4. Open **Priya Nair**. Her photos are in the drawer, and with an AI key set the agent opens them itself (marked **AI reviewed**) and describes the damage. Click **Carrier claim** to draft the UPS claim.
 5. Back on Daniel, click **Submit evidence to PayPal**, then use **Seller wins** to simulate PayPal's ruling. The **Agent track record** and **Impact so far** panels update.
 6. Open **Ethan Cole** and click **Send offer**. In demo mode the buyer accepts after a few seconds.
-7. Click **⚡ Simulate dispute** to see a dispute arrive by webhook and get investigated automatically. Turn on **🔔 Alerts** first to get a browser notification.
+7. Click **Simulate dispute** to see a dispute arrive by webhook and get investigated automatically. Turn on **Alerts** first to get a browser notification.
 8. Click **Find patterns** for the root-cause report.
 9. Open **Autopilot**, set it to 80% / $100 and simulate again.
 
@@ -165,7 +165,7 @@ It lists the exact model IDs your key can use, then tests tool calling, JSON out
 4. Restart the app. The header should show **PayPal Sandbox · live**.
 5. **Create something to dispute.** Open **Storefront ↗** (`/store`) and buy an item with a *sandbox personal (buyer) account*. The server creates and captures the order through the Orders v2 API and pushes tracking to PayPal with the add-tracking API.
 6. **Open a dispute as the buyer.** Log in to [sandbox.paypal.com](https://www.sandbox.paypal.com) as the same buyer, find the payment, choose *Report a problem*, and pick for example *I didn't receive it*.
-7. The dispute arrives through the webhook, or via **↻ Refresh**, and the agent investigates it. Submit evidence, make an offer or accept, then use the sandbox-only **adjudicate** buttons (*Seller wins* / *Buyer wins*) to finish the lifecycle.
+7. The dispute arrives through the webhook, or via **Refresh**, and the agent investigates it. Submit evidence, make an offer or accept, then use the sandbox-only **adjudicate** buttons (*Seller wins* / *Buyer wins*) to finish the lifecycle.
 
 **How the order is found.** Sandbox purchases from the storefront are also saved to the local store database. For any other sandbox payment, the agent rebuilds the order from PayPal:
 
@@ -307,53 +307,4 @@ data/attachments/  illustrative customer photos (generated by scripts/make_sampl
 static/            dashboard (index.html, app.js, styles.css) + storefront (store.html, store.js)
 mcp_server.py      MCP server for Claude Desktop / other agents
 scripts/           eval_agent.py (labelled-scenario eval), make_sample_photos.py
-tests/             API flow, rules engine, agent loop, vision, auth, MCP and PayPal wire-format tests
-.github/workflows/ CI: tests + offline eval on every push
 ```
-
-### Tests
-
-```bash
-pip install -r requirements-dev.txt
-pytest -q
-```
-
-The 37 tests cover:
-
-* the Gemini / OpenAI-compatible adapter: the tool loop, thought-signature echo, images, JSON-mode fallbacks and re-asking, fallback model on quota errors, and provider auto-detection,
-
-* Dispute Radar's detection, actions and password guard,
-* the impact metrics,
-* the carrier-claim drafting,
-* rebuilding an order from PayPal (capture to order to trackers) and payer-history windowing,
-* EasyPost normalisation,
-* the alert webhook and once-only deadline alerts,
-
-and from earlier rounds:
-
-* the full demo flow through the HTTP API,
-* the rules engine's verdict on every scenario and the autopilot guardrails,
-* the agent's tool loop against a scripted model, including the image block it sends for photos,
-* the PayPal client's wire format through a mocked HTTP transport: the multipart `input` part, the PDF attachment, `accept_claim_type`, offer-type validation, and raw-body webhook verification (the event bytes are sent verbatim),
-* attachment path-traversal and SSRF guards,
-* the demo-password guard,
-* track-record scoring,
-* the MCP server driving the app end to end.
-
----
-
-## Honest limitations
-
-* **The demo merchant's systems are simulated.** The seeded orders, carrier scans and helpdesk come from `data/seed.json`. In sandbox mode the order data can come from PayPal alone and carrier scans from EasyPost, but the **helpdesk stays simulated**: Radar replies are written to the demo helpdesk, not emailed. A real deployment would connect Zendesk, Gmail or similar.
-* **Deliberately not built:**
-  * **"Connect with PayPal" for other merchants.** Reading another merchant's disputes requires PayPal partner approval, which a hackathon app can't get.
-  * **Customer testimonials.** There are none in this repo; any quotes in the pitch must come from real sellers.
-  * **Scraping carrier websites.** That would break their terms; EasyPost's official API is used instead.
-* **The customer photos are illustrations**, drawn by `scripts/make_sample_photos.py` and labelled as such. Real buyer photos on a PayPal dispute go through the same `view_attachment` tool.
-* **Win probabilities are estimates** from the agent's reasoning, not a trained model. The track record and `scripts/eval_agent.py` are how you check them. Treat them as decision support, not legal advice.
-* **Sandbox only.** Built against the PayPal sandbox. The adjudicate endpoint is sandbox-only. The request formats are checked against PayPal's published OpenAPI schema and covered by wire-format tests, but run one sandbox dispute end to end before relying on it.
-* State is kept in a JSON file (`data/state.json`). Fine for one instance; see the Render notes about the free plan's disk.
-
-## License
-
-[MIT](LICENSE)
