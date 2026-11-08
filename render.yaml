@@ -1,0 +1,42 @@
+# One-click deploy: Render dashboard -> New -> Blueprint -> pick this repo.
+services:
+  - type: web
+    name: dispute-defender
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.2
+      # AI: set GEMINI_API_KEY (free) or ANTHROPIC_API_KEY.
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: AI_FALLBACK_MODEL
+        value: gemini-3.1-flash-lite
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: MAX_AI_RUNS_PER_HOUR
+        value: "8"
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: PAYPAL_WEBHOOK_ID
+        sync: false
+      - key: DEMO_PASSWORD
+        sync: false
+      - key: EASYPOST_API_KEY
+        sync: false
+      - key: ALERT_WEBHOOK_URL
+        sync: false
+    # The free plan's disk is wiped on every deploy/restart, so analyses and actions reset.
+    # To keep them, switch to a paid plan and uncomment (DATA_DIR must point at the disk):
+    # disk:
+    #   name: dispute-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
+    # and add an env var  DATA_DIR=/var/data

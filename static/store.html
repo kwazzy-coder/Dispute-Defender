@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiln &amp; Clay Studio</title>
+  <meta name="description" content="Sandbox storefront used to create real PayPal sandbox payments that can then be disputed.">
+  <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    .shop { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+    .hero { padding: 8px 0 20px; }
+    .hero h1 { font-size: 28px; letter-spacing: -.02em; }
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+    .product { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--shadow); }
+    .product h3 { font-size: 15px; }
+    .product .price { font-size: 20px; font-weight: 750; }
+    .product p { margin: 0; color: var(--muted); font-size: 13px; flex: 1; }
+    .swatch { height: 110px; border-radius: 10px; background: linear-gradient(135deg, var(--brand-soft), var(--neutral-bg)); display: grid; place-items: center; font-size: 40px; }
+    .notice { margin-bottom: 16px; }
+    .receipt { margin-top: 18px; }
+    .receipt ol { padding-left: 18px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; background: var(--neutral-bg); padding: 1px 5px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span style="font-size:22px">🏺</span><div><div class="brand-name">Kiln &amp; Clay Studio</div><div class="brand-sub">Sandbox storefront for Dispute Defender</div></div></div>
+    <nav class="actions"><a class="btn ghost" href="/">← Back to dashboard</a></nav>
+  </header>
+  <div class="shop">
+    <section class="hero">
+      <h1>Handmade ceramics</h1>
+      <p class="muted">Buy something with a PayPal <strong>sandbox</strong> buyer account, then open a dispute on it as that buyer. The dispute shows up in Dispute Defender for the agent to investigate.</p>
+    </section>
+    <div id="notice" class="callout notice" hidden></div>
+    <div id="receipt" class="callout info receipt" hidden></div>
+    <section class="products" id="products"></section>
+  </div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <script src="/static/store.js"></script>
+</body>
+</html>

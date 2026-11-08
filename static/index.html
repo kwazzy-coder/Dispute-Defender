@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dispute Defender</title>
+  <meta name="description" content="An AI agent that investigates PayPal disputes, drafts the evidence, and tells small merchants when to fight, settle or refund.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231d4ed8' d='M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z'/%3E%3Cpath fill='white' d='m10.5 14.6-2.8-2.8-1.2 1.2 4 4 7-7-1.2-1.2z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/styles/ag-theme-quartz.css">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#grid" id="skip-to-grid">Skip to disputes</a>
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z"/><path fill="var(--surface)" d="m10.5 14.6-2.8-2.8-1.2 1.2 4 4 7-7-1.2-1.2z"/></svg>
+      <div>
+        <div class="brand-name">Dispute Defender</div>
+        <div class="brand-sub" id="merchant-name">&nbsp;</div>
+      </div>
+    </div>
+    <div class="pills">
+      <span class="pill" id="mode-pill">…</span>
+      <span class="pill" id="ai-pill">…</span>
+    </div>
+    <nav class="actions">
+      <button class="btn ghost" id="btn-simulate" hidden title="Create a new dispute and deliver it through the webhook path">⚡ Simulate dispute</button>
+      <button class="btn ghost" id="btn-analyze-all">Analyze all</button>
+      <button class="btn ghost" id="btn-insights">Find patterns</button>
+      <button class="btn ghost" id="btn-autopilot"><span class="dot" id="autopilot-dot"></span>Autopilot</button>
+      <button class="btn ghost" id="btn-alerts" title="Browser notifications for new disputes and deadlines">🔔 Alerts</button>
+      <a class="btn ghost" id="link-store" href="/store" target="_blank" rel="noopener">Storefront ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="kpis" id="kpis" aria-label="Key metrics"></section>
+
+    <section class="panel split-panel">
+      <div class="split-a">
+        <h2>Money at risk by AI verdict</h2>
+        <p class="muted small-text">Open disputes, by what the agent recommends doing.</p>
+        <div id="verdict-chart" class="stackbar" role="img"></div>
+        <div id="verdict-legend" class="legend"></div>
+      </div>
+      <div class="split-b">
+        <h2>Agent track record</h2>
+        <p class="muted small-text">Predicted win chance vs. PayPal's actual ruling.</p>
+        <div id="track" class="track-record"></div>
+      </div>
+      <div class="split-b">
+        <h2>Impact so far</h2>
+        <p class="muted small-text">What Dispute Defender has done for this shop.</p>
+        <div id="impact" class="impact"></div>
+      </div>
+    </section>
+
+    <section class="panel radar-panel">
+      <div class="panel-head">
+        <div>
+          <h2>Dispute Radar <span class="badge info" id="radar-count">…</span></h2>
+          <p class="muted small-text" style="margin:2px 0 0">Orders likely to become PayPal disputes. Fix them before the buyer files.</p>
+        </div>
+        <button class="btn ghost small" id="btn-radar-refresh">↻ Rescan</button>
+      </div>
+      <div id="radar" class="radar-list"></div>
+    </section>
+
+    <section class="panel grid-panel">
+      <div class="panel-head">
+        <h2>Disputes</h2>
+        <div class="panel-tools">
+          <div class="chips" id="status-chips" role="group" aria-label="Filter by status">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="needs">Needs response</button>
+            <button class="chip" data-filter="review">With PayPal / buyer</button>
+            <button class="chip" data-filter="resolved">Resolved</button>
+          </div>
+          <input type="search" id="quick-filter" placeholder="Filter by buyer, item, reason…" aria-label="Filter disputes">
+          <button class="btn ghost small" id="btn-export" title="Download the current view as CSV">⬇ CSV</button>
+          <button class="btn ghost small" id="btn-refresh" title="Refresh from PayPal">↻ Refresh</button>
+        </div>
+      </div>
+      <div id="grid" class="ag-theme-quartz"></div>
+    </section>
+
+    <section class="panel activity-panel">
+      <div class="panel-head"><h2>Activity</h2><button class="btn ghost small" id="btn-reset" hidden>Reset demo data</button></div>
+      <ol id="activity" class="activity"></ol>
+    </section>
+  </main>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-inner" id="drawer-body"></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <dialog id="confirm-dialog">
+    <form method="dialog">
+      <h3 id="confirm-title">Confirm</h3>
+      <p id="confirm-text"></p>
+      <div class="dialog-actions">
+        <button class="btn ghost" value="cancel">Cancel</button>
+        <button class="btn primary" value="ok" id="confirm-ok">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="autopilot-dialog">
+    <form method="dialog" id="autopilot-form">
+      <h3>Autopilot</h3>
+      <p class="muted">When on, the agent submits evidence to PayPal by itself, but only for disputes it recommends fighting that fall inside these guardrails. Everything else waits for you.</p>
+      <label class="switch-row"><input type="checkbox" id="ap-enabled"> <span>Enable autopilot</span></label>
+      <label>Minimum win probability: <strong id="ap-min-label"></strong>
+        <input type="range" id="ap-min" min="50" max="100" step="1"></label>
+      <label>Maximum dispute amount (USD)
+        <input type="number" id="ap-max" min="0" max="10000" step="1"></label>
+      <div class="dialog-actions">
+        <button class="btn ghost" value="cancel">Cancel</button>
+        <button class="btn primary" value="save" id="ap-save">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="password-dialog">
+    <form method="dialog">
+      <h3>Demo password</h3>
+      <p class="muted">This public demo is read-only for visitors. Enter the demo password (it's in the hackathon submission) to submit evidence, make offers or change settings.</p>
+      <label>Password <input type="password" id="pw-input" autocomplete="current-password" class="field"></label>
+      <p class="callout" id="pw-error" hidden>That password didn't work.</p>
+      <div class="dialog-actions">
+        <button class="btn ghost" value="cancel">Cancel</button>
+        <button class="btn primary" value="ok">Unlock</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="chart-tip" class="chart-tip" role="tooltip" hidden></div>
+
+  <dialog id="claim-dialog" class="wide">
+    <div id="claim-body"></div>
+    <form method="dialog" class="dialog-actions">
+      <button class="btn ghost" type="button" id="claim-copy">Copy letter</button>
+      <button class="btn primary">Close</button>
+    </form>
+  </dialog>
+
+  <dialog id="insights-dialog" class="wide">
+    <div id="insights-body"></div>
+    <form method="dialog" class="dialog-actions"><button class="btn primary">Close</button></form>
+  </dialog>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/dist/ag-grid-community.min.noStyle.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

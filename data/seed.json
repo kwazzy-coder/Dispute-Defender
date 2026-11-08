@@ -1,0 +1,361 @@
+{
+  "_comment": "Demo data for a fictional merchant. Keys ending in _days_ago / _in_days are converted to ISO timestamps relative to first start-up (see app/seed.py).",
+  "merchant": {
+    "name": "Kiln & Clay Studio",
+    "website": "kilnandclay.example",
+    "support_email": "hello@kilnandclay.example",
+    "policies": {
+      "returns": "Returns accepted within 30 days of delivery for unused items in original packaging. Refunds are issued to the original payment method within 3 business days of the return arriving at our studio. Damaged-in-transit items are refunded or replaced at no cost when reported within 7 days with photos.",
+      "shipping": "All orders ship within 2 business days with USPS or UPS tracking. Orders over $150 require a delivery signature. We ship only to the address shown on the PayPal transaction unless the buyer changes it in their PayPal account.",
+      "handmade_notice": "Every piece is hand-thrown and hand-glazed. Glaze colour, speckling and drip patterns vary from piece to piece and may differ from product photos. This variation is not a defect."
+    },
+    "products": [
+      {"sku": "KC-VASE-TALL", "title": "Tall Speckled Vase", "price": "78.00", "description": "Hand-thrown stoneware vase, 30 cm tall, speckled oatmeal glaze. Watertight. Each vase is unique and glaze varies slightly from the photo."},
+      {"sku": "KC-BOWL-NEST", "title": "Nesting Bowls (set of 3)", "price": "134.50", "description": "Three stoneware nesting bowls (12, 16 and 20 cm) in matte charcoal glaze. Dishwasher safe."},
+      {"sku": "KC-PLATTER-L", "title": "Large Serving Platter", "price": "205.00", "description": "45 cm oval serving platter in glossy celadon glaze. Gift wrapping available on request."},
+      {"sku": "KC-CANDLE-2", "title": "Candle Cup Duo", "price": "48.00", "description": "Two ceramic candle cups with hand-poured soy wax, sandalwood scent."},
+      {"sku": "KC-MUG-SET4", "title": "Morning Mug Set (set of 4)", "price": "98.00", "description": "Four 350 ml mugs in assorted ocean glazes. Handmade: colour and drip patterns vary between mugs and from the photos."},
+      {"sku": "KC-PLANTER", "title": "Hanging Planter", "price": "36.00", "description": "Small porcelain hanging planter with jute rope, white satin glaze. Shipping included."},
+      {"sku": "KC-TEA-PAIR", "title": "Tea Bowl Pair", "price": "58.00", "description": "Two chawan-style tea bowls in tenmoku glaze."},
+      {"sku": "KC-PITCHER", "title": "Studio Pitcher", "price": "175.00", "description": "1.5 litre stoneware pitcher in ash glaze."}
+    ],
+    "orders": [
+      {
+        "order_id": "KC-2041", "invoice_id": "KC-2041", "paypal_capture_id": "8MC58172NR3394021",
+        "placed_days_ago": 12,
+        "customer": {"name": "Marcus Hale", "email": "marcus.hale@example.com"},
+        "items": [{"sku": "KC-VASE-TALL", "name": "Tall Speckled Vase", "qty": 1, "price": "78.00"}],
+        "shipping_cost": "8.00", "total": "86.00", "currency": "USD",
+        "shipping_address": {"name": "Marcus Hale", "line1": "2210 Alder St", "city": "Eugene", "state": "OR", "postal_code": "97405", "country_code": "US"},
+        "ip": "24.20.117.9", "device_id": "dev-a91c",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842761234", "shipped_days_ago": 10},
+        "refunds": [], "internal_notes": "Packed in double-wall box with foam insert."
+      },
+      {
+        "order_id": "KC-2056", "invoice_id": "KC-2056", "paypal_capture_id": "2RT77310KX0916544",
+        "placed_days_ago": 9,
+        "customer": {"name": "Priya Nair", "email": "priya.nair@example.com"},
+        "items": [{"sku": "KC-BOWL-NEST", "name": "Nesting Bowls (set of 3)", "qty": 1, "price": "134.50"}],
+        "shipping_cost": "8.00", "total": "142.50", "currency": "USD",
+        "shipping_address": {"name": "Priya Nair", "line1": "88 Kingsley Ave, Apt 4", "city": "Oakland", "state": "CA", "postal_code": "94610", "country_code": "US"},
+        "ip": "98.207.55.140", "device_id": "dev-33be",
+        "fulfillment": {"carrier": "UPS", "tracking_number": "1Z999AA10123456784", "shipped_days_ago": 8},
+        "refunds": [], "internal_notes": "Packed in single box - cardboard dividers were out of stock that week, bowls wrapped in paper only."
+      },
+      {
+        "order_id": "KC-1979", "invoice_id": "KC-1979", "paypal_capture_id": "5DK20019PL7781203",
+        "placed_days_ago": 210,
+        "customer": {"name": "Daniel Okafor", "email": "d.okafor@example.com"},
+        "items": [{"sku": "KC-MUG-SET4", "name": "Morning Mug Set (set of 4)", "qty": 1, "price": "98.00"}],
+        "shipping_cost": "8.00", "total": "106.00", "currency": "USD",
+        "shipping_address": {"name": "Daniel Okafor", "line1": "48 Birch Lane", "city": "Boise", "state": "ID", "postal_code": "83702", "country_code": "US"},
+        "ip": "73.118.40.12", "device_id": "dev-7f3a",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555840001979", "shipped_days_ago": 208},
+        "refunds": [], "internal_notes": ""
+      },
+      {
+        "order_id": "KC-2004", "invoice_id": "KC-2004", "paypal_capture_id": "1HB40287QA5529917",
+        "placed_days_ago": 95,
+        "customer": {"name": "Daniel Okafor", "email": "d.okafor@example.com"},
+        "items": [{"sku": "KC-TEA-PAIR", "name": "Tea Bowl Pair", "qty": 1, "price": "58.00"}],
+        "shipping_cost": "6.00", "total": "64.00", "currency": "USD",
+        "shipping_address": {"name": "Daniel Okafor", "line1": "48 Birch Lane", "city": "Boise", "state": "ID", "postal_code": "83702", "country_code": "US"},
+        "ip": "73.118.40.12", "device_id": "dev-7f3a",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555840002004", "shipped_days_ago": 93},
+        "refunds": [], "internal_notes": ""
+      },
+      {
+        "order_id": "KC-2063", "invoice_id": "KC-2063", "paypal_capture_id": "6WJ93315HD2207468",
+        "placed_days_ago": 9,
+        "customer": {"name": "Daniel Okafor", "email": "d.okafor@example.com"},
+        "items": [{"sku": "KC-PLATTER-L", "name": "Large Serving Platter", "qty": 1, "price": "205.00"}],
+        "shipping_cost": "14.00", "total": "219.00", "currency": "USD",
+        "shipping_address": {"name": "Daniel Okafor", "line1": "48 Birch Lane", "city": "Boise", "state": "ID", "postal_code": "83702", "country_code": "US"},
+        "ip": "73.118.40.12", "device_id": "dev-7f3a",
+        "fulfillment": {"carrier": "UPS", "tracking_number": "1Z999AA10123452063", "shipped_days_ago": 7},
+        "refunds": [], "internal_notes": "Gift wrapped per customer email. Signature required (order over $150)."
+      },
+      {
+        "order_id": "KC-2038", "invoice_id": "KC-2038", "paypal_capture_id": "3NV11804GC6650372",
+        "placed_days_ago": 25,
+        "customer": {"name": "Sofia Brandt", "email": "sofia.brandt@example.com"},
+        "items": [{"sku": "KC-CANDLE-2", "name": "Candle Cup Duo", "qty": 1, "price": "48.00"}],
+        "shipping_cost": "6.00", "total": "54.00", "currency": "USD",
+        "shipping_address": {"name": "Sofia Brandt", "line1": "1503 W Grand Ave", "city": "Chicago", "state": "IL", "postal_code": "60642", "country_code": "US"},
+        "ip": "67.175.20.88", "device_id": "dev-c0d2",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842762038", "shipped_days_ago": 24},
+        "return": {"carrier": "USPS", "tracking_number": "9202090153540012342038", "received_days_ago": 8},
+        "refunds": [{"refund_id": "4LS40972TB3318256", "amount": "54.00", "currency": "USD", "issued_days_ago": 6, "status": "COMPLETED"}],
+        "internal_notes": "Return received unused. Full refund incl. shipping issued through PayPal."
+      },
+      {
+        "order_id": "KC-2070", "invoice_id": "KC-2070", "paypal_capture_id": "9PC26651WE4410783",
+        "placed_days_ago": 7,
+        "customer": {"name": "Ethan Cole", "email": "ethan.cole@example.com"},
+        "items": [{"sku": "KC-MUG-SET4", "name": "Morning Mug Set (set of 4)", "qty": 1, "price": "98.00"}],
+        "shipping_cost": "0.00", "total": "98.00", "currency": "USD",
+        "shipping_address": {"name": "Ethan Cole", "line1": "730 Pine St", "city": "Burlington", "state": "VT", "postal_code": "05401", "country_code": "US"},
+        "ip": "64.222.190.7", "device_id": "dev-5e81",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842762070", "shipped_days_ago": 6},
+        "refunds": [], "internal_notes": "First order. Free shipping promo."
+      },
+      {
+        "order_id": "KC-2072", "invoice_id": "KC-2072", "paypal_capture_id": "7AF55102MM8830194",
+        "placed_days_ago": 11,
+        "customer": {"name": "Hannah Lee", "email": "hannah.lee@example.com"},
+        "items": [{"sku": "KC-PLANTER", "name": "Hanging Planter", "qty": 1, "price": "36.00"}],
+        "shipping_cost": "0.00", "total": "36.00", "currency": "USD",
+        "shipping_address": {"name": "Hannah Lee", "line1": "4120 Fremont Ave N", "city": "Seattle", "state": "WA", "postal_code": "98103", "country_code": "US"},
+        "ip": "50.47.222.31", "device_id": "dev-91aa",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842762072", "shipped_days_ago": 10},
+        "refunds": [], "internal_notes": ""
+      },
+      {
+        "order_id": "KC-2073", "invoice_id": "KC-2073", "paypal_capture_id": "4GH83367RT1195530",
+        "placed_days_ago": 10.98,
+        "customer": {"name": "Hannah Lee", "email": "hannah.lee@example.com"},
+        "items": [{"sku": "KC-PLANTER", "name": "Hanging Planter", "qty": 1, "price": "36.00"}],
+        "shipping_cost": "0.00", "total": "36.00", "currency": "USD",
+        "shipping_address": {"name": "Grace Lee", "line1": "915 N Yakima Ave", "city": "Tacoma", "state": "WA", "postal_code": "98403", "country_code": "US"},
+        "ip": "50.47.222.31", "device_id": "dev-91aa",
+        "gift_message": "Happy housewarming, Grace! Love, Hannah",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842762073", "shipped_days_ago": 10},
+        "refunds": [], "internal_notes": "Second order placed ~25 minutes after KC-2072, different ship-to address, gift message."
+      },
+      {
+        "order_id": "KC-2077", "invoice_id": "KC-2077", "paypal_capture_id": "1TB60318QP4472906",
+        "placed_days_ago": 8,
+        "customer": {"name": "Noah Fischer", "email": "noah.fischer@example.com"},
+        "items": [{"sku": "KC-TEA-PAIR", "name": "Tea Bowl Pair", "qty": 1, "price": "58.00"}],
+        "shipping_cost": "6.00", "total": "64.00", "currency": "USD",
+        "shipping_address": {"name": "Noah Fischer", "line1": "611 W 39th St", "city": "Kansas City", "state": "MO", "postal_code": "64111", "country_code": "US"},
+        "ip": "68.103.12.200", "device_id": "dev-4c19",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842762077", "shipped_days_ago": 7},
+        "refunds": [], "internal_notes": ""
+      },
+      {
+        "order_id": "KC-2079", "invoice_id": "KC-2079", "paypal_capture_id": "5YH27740LS9018833",
+        "placed_days_ago": 0.4,
+        "customer": {"name": "Grace Kim", "email": "gkim.home@example.com"},
+        "items": [{"sku": "KC-PITCHER", "name": "Studio Pitcher", "qty": 1, "price": "175.00"}],
+        "shipping_cost": "14.00", "total": "189.00", "currency": "USD",
+        "shipping_address": {"name": "Grace Kim", "line1": "77 Lakeview Terrace", "city": "Madison", "state": "WI", "postal_code": "53703", "country_code": "US"},
+        "ip": "45.83.220.17", "device_id": "dev-e7a2",
+        "fulfillment": null,
+        "refunds": [], "internal_notes": "Not shipped yet."
+      },
+      {
+        "order_id": "KC-2080", "invoice_id": "KC-2080", "paypal_capture_id": "8KD15596ZW3307461",
+        "placed_days_ago": 6,
+        "customer": {"name": "Lucía Romero", "email": "lucia.romero@example.com"},
+        "items": [{"sku": "KC-MUG-SET4", "name": "Morning Mug Set (set of 4)", "qty": 1, "price": "98.00"}],
+        "shipping_cost": "0.00", "total": "98.00", "currency": "USD",
+        "shipping_address": {"name": "Lucía Romero", "line1": "2150 SW 8th St, Apt 12", "city": "Miami", "state": "FL", "postal_code": "33135", "country_code": "US"},
+        "ip": "73.205.18.44", "device_id": "dev-91c0",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842762080", "shipped_days_ago": 5},
+        "refunds": [], "internal_notes": ""
+      }
+    ],
+    "tracking": {
+      "9400111202555842761234": {"carrier": "USPS", "status": "DELIVERED", "signed_by": "M HALE", "events": [
+        {"days_ago": 10, "location": "Portland, OR 97214", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 8, "location": "Eugene, OR 97401", "description": "Arrived at Post Office"},
+        {"days_ago": 6, "location": "Eugene, OR 97405", "description": "Delivered, Left with Individual - signed by M HALE (2210 Alder St)"}
+      ]},
+      "1Z999AA10123456784": {"carrier": "UPS", "status": "DELIVERED", "signed_by": "", "events": [
+        {"days_ago": 8, "location": "Portland, OR", "description": "Origin scan"},
+        {"days_ago": 6, "location": "Oakland, CA", "description": "Package damaged in transit - box crushed, delivery will be attempted"},
+        {"days_ago": 5, "location": "Oakland, CA", "description": "Delivered - front door"}
+      ]},
+      "1Z999AA10123452063": {"carrier": "UPS", "status": "DELIVERED", "signed_by": "D OKAFOR", "events": [
+        {"days_ago": 7, "location": "Portland, OR", "description": "Origin scan"},
+        {"days_ago": 4, "location": "Boise, ID", "description": "Delivered - signed by D OKAFOR at 48 Birch Lane"}
+      ]},
+      "9400111202555842762038": {"carrier": "USPS", "status": "DELIVERED", "signed_by": "", "events": [
+        {"days_ago": 24, "location": "Portland, OR", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 21, "location": "Chicago, IL 60642", "description": "Delivered, In/At Mailbox"}
+      ]},
+      "9202090153540012342038": {"carrier": "USPS", "status": "DELIVERED", "signed_by": "KILN AND CLAY", "events": [
+        {"days_ago": 12, "location": "Chicago, IL", "description": "Return shipment accepted"},
+        {"days_ago": 8, "location": "Portland, OR 97214", "description": "Delivered to sender - Kiln & Clay Studio"}
+      ]},
+      "9400111202555842762070": {"carrier": "USPS", "status": "DELIVERED", "signed_by": "", "events": [
+        {"days_ago": 6, "location": "Portland, OR", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 3, "location": "Burlington, VT 05401", "description": "Delivered, Front Door/Porch"}
+      ]},
+      "9400111202555842762072": {"carrier": "USPS", "status": "DELIVERED", "signed_by": "", "events": [
+        {"days_ago": 10, "location": "Portland, OR", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 7, "location": "Seattle, WA 98103", "description": "Delivered, In/At Mailbox"}
+      ]},
+      "9400111202555842762073": {"carrier": "USPS", "status": "DELIVERED", "signed_by": "", "events": [
+        {"days_ago": 10, "location": "Portland, OR", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 7, "location": "Tacoma, WA 98403", "description": "Delivered, Front Door/Porch"}
+      ]},
+      "9400111202555842762077": {"carrier": "USPS", "status": "IN_TRANSIT", "signed_by": "", "events": [
+        {"days_ago": 7, "location": "Portland, OR", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 5.5, "location": "Kansas City, MO Network Distribution Center", "description": "Arrived at USPS Regional Facility"},
+        {"days_ago": 4.5, "location": "Kansas City, MO Network Distribution Center", "description": "In Transit, Arriving Late"}
+      ]},
+      "9400111202555842762080": {"carrier": "USPS", "status": "DELIVERED", "signed_by": "", "events": [
+        {"days_ago": 5, "location": "Portland, OR", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 1.6, "location": "Miami, FL 33135", "description": "Delivered, In/At Mailbox"}
+      ]}
+    },
+    "helpdesk": [
+      {"id": "T-881", "customer_email": "priya.nair@example.com", "days_ago": 4.6, "from": "customer", "channel": "email", "subject": "Bowls arrived broken", "body": "Hi, my nesting bowls arrived today and two of the three are cracked straight through. The box was crushed on one corner and there was no padding between the bowls, just paper. Photos attached (3). I'd like a refund please.", "attachments": ["bowls-crack-1.png", "bowls-crack-2.png", "box-corner.png"]},
+      {"id": "T-874", "customer_email": "d.okafor@example.com", "days_ago": 8.8, "from": "customer", "channel": "email", "subject": "Gift wrap for the platter?", "body": "Hi! I just ordered the large celadon platter (KC-2063). Could you gift wrap it? It's a wedding present for my sister. Thanks - Daniel"},
+      {"id": "T-875", "customer_email": "d.okafor@example.com", "days_ago": 8.5, "from": "store", "channel": "email", "subject": "Re: Gift wrap for the platter?", "body": "Congratulations to your sister! We'll gift wrap it at no charge. It ships in 2 days with UPS, signature required."},
+      {"id": "T-890", "customer_email": "sofia.brandt@example.com", "days_ago": 13, "from": "customer", "channel": "email", "subject": "Return - candle cups", "body": "The scent is a bit strong for me, I'd like to return them. Sending them back today."},
+      {"id": "T-891", "customer_email": "sofia.brandt@example.com", "days_ago": 6, "from": "store", "channel": "email", "subject": "Your refund has been issued", "body": "Hi Sofia, your return arrived and we've issued a full refund of $54.00 (including shipping) to your PayPal account. PayPal refund ID 4LS40972TB3318256. Card refunds can take 3-5 business days to appear."},
+      {"id": "T-902", "customer_email": "ethan.cole@example.com", "days_ago": 2.4, "from": "customer", "channel": "chat", "subject": "Mug colour", "body": "Got the mugs, overall love them! But one mug is a way darker blue than the other three and than the photo. Kind of disappointed for the price. Pic attached.", "attachments": ["mugs-colour.png"]},
+      {"id": "T-910", "customer_email": "noah.fischer@example.com", "days_ago": 1.2, "from": "customer", "channel": "email", "subject": "Where is my package?", "body": "Hi, my tea bowls were supposed to arrive days ago and the tracking hasn't changed since it got to Kansas City. If they don't show up soon I'll have to open a case with PayPal."},
+      {"id": "T-912", "customer_email": "gkim.home@example.com", "days_ago": 0.3, "from": "customer", "channel": "email", "subject": "URGENT change shipping address", "body": "Hello, please do not ship to Madison. Send the pitcher to my cousin instead: G. Kim c/o QuickShip Parcel Forwarding, 9100 NW 25th St, Suite 210, Doral FL 33172. Please rush it, I can pay extra."},
+      {"id": "T-913", "customer_email": "lucia.romero@example.com", "days_ago": 0.8, "from": "customer", "channel": "email", "subject": "Mi pedido", "body": "Hola, el seguimiento dice que mi pedido fue entregado hace dos días pero no lo encuentro en mi buzón ni en la recepción del edificio. ¿Me pueden ayudar? Gracias."}
+    ]
+  },
+  "mock_disputes": [
+    {
+      "dispute_id": "PP-D-27461", "create_time_days_ago": 2, "update_time_days_ago": 2,
+      "reason": "MERCHANDISE_OR_SERVICE_NOT_RECEIVED", "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_life_cycle_stage": "INQUIRY", "dispute_channel": "INTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "86.00"},
+      "seller_response_due_date_in_days": 8,
+      "disputed_transactions": [{"seller_transaction_id": "8MC58172NR3394021", "create_time_days_ago": 12, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "86.00"}, "invoice_number": "KC-2041", "buyer": {"name": "Marcus Hale"}, "items": [{"item_name": "Tall Speckled Vase", "item_quantity": "1"}]}],
+      "messages": [{"posted_by": "BUYER", "time_posted_days_ago": 2, "content": "I never received my vase. Tracking says delivered but there was nothing at my door."}]
+    },
+    {
+      "dispute_id": "PP-D-27488", "create_time_days_ago": 3, "update_time_days_ago": 3,
+      "reason": "MERCHANDISE_OR_SERVICE_NOT_AS_DESCRIBED", "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_life_cycle_stage": "INQUIRY", "dispute_channel": "INTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "142.50"},
+      "seller_response_due_date_in_days": 6,
+      "disputed_transactions": [{"seller_transaction_id": "2RT77310KX0916544", "create_time_days_ago": 9, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "142.50"}, "invoice_number": "KC-2056", "buyer": {"name": "Priya Nair"}, "items": [{"item_name": "Nesting Bowls (set of 3)", "item_quantity": "1"}]}],
+      "messages": [{"posted_by": "BUYER", "time_posted_days_ago": 3, "content": "Item arrived damaged - 2 of the 3 bowls are cracked. I emailed the seller with photos 2 days ago and got no reply."}]
+    },
+    {
+      "dispute_id": "PP-D-27502", "create_time_days_ago": 1, "update_time_days_ago": 1,
+      "reason": "UNAUTHORISED", "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_life_cycle_stage": "CHARGEBACK", "dispute_channel": "EXTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "219.00"},
+      "seller_response_due_date_in_days": 2,
+      "disputed_transactions": [{"seller_transaction_id": "6WJ93315HD2207468", "create_time_days_ago": 9, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "219.00"}, "invoice_number": "KC-2063", "buyer": {"name": "Daniel Okafor"}, "items": [{"item_name": "Large Serving Platter", "item_quantity": "1"}]}],
+      "messages": []
+    },
+    {
+      "dispute_id": "PP-D-27515", "create_time_days_ago": 1.5, "update_time_days_ago": 1.5,
+      "reason": "CREDIT_NOT_PROCESSED", "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_life_cycle_stage": "INQUIRY", "dispute_channel": "INTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "54.00"},
+      "seller_response_due_date_in_days": 9,
+      "disputed_transactions": [{"seller_transaction_id": "3NV11804GC6650372", "create_time_days_ago": 25, "transaction_status": "PARTIALLY_REFUNDED", "gross_amount": {"currency_code": "USD", "value": "54.00"}, "invoice_number": "KC-2038", "buyer": {"name": "Sofia Brandt"}, "items": [{"item_name": "Candle Cup Duo", "item_quantity": "1"}]}],
+      "messages": [{"posted_by": "BUYER", "time_posted_days_ago": 1.5, "content": "I returned the candle cups almost two weeks ago and still have not received my refund."}]
+    },
+    {
+      "dispute_id": "PP-D-27530", "create_time_days_ago": 1, "update_time_days_ago": 1,
+      "reason": "MERCHANDISE_OR_SERVICE_NOT_AS_DESCRIBED", "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_life_cycle_stage": "INQUIRY", "dispute_channel": "INTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "98.00"},
+      "seller_response_due_date_in_days": 10,
+      "disputed_transactions": [{"seller_transaction_id": "9PC26651WE4410783", "create_time_days_ago": 7, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "98.00"}, "invoice_number": "KC-2070", "buyer": {"name": "Ethan Cole"}, "items": [{"item_name": "Morning Mug Set (set of 4)", "item_quantity": "1"}]}],
+      "messages": [{"posted_by": "BUYER", "time_posted_days_ago": 1, "content": "The mugs look different from the photos. One is a much darker blue than the others."}]
+    },
+    {
+      "dispute_id": "PP-D-27544", "create_time_days_ago": 2.5, "update_time_days_ago": 2.5,
+      "reason": "DUPLICATE_TRANSACTION", "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_life_cycle_stage": "INQUIRY", "dispute_channel": "INTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "36.00"},
+      "seller_response_due_date_in_days": 7,
+      "disputed_transactions": [{"seller_transaction_id": "4GH83367RT1195530", "create_time_days_ago": 10.98, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "36.00"}, "invoice_number": "KC-2073", "buyer": {"name": "Hannah Lee"}, "items": [{"item_name": "Hanging Planter", "item_quantity": "1"}]}],
+      "messages": [{"posted_by": "BUYER", "time_posted_days_ago": 2.5, "content": "I was charged twice for the same planter."}]
+    },
+    {
+      "dispute_id": "PP-D-27390", "create_time_days_ago": 40, "update_time_days_ago": 22,
+      "reason": "MERCHANDISE_OR_SERVICE_NOT_RECEIVED", "status": "RESOLVED",
+      "dispute_life_cycle_stage": "CHARGEBACK", "dispute_channel": "INTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "64.00"},
+      "dispute_outcome": {"outcome_code": "RESOLVED_SELLER_FAVOUR"},
+      "disputed_transactions": [{"seller_transaction_id": "0QE11273BN5562219", "create_time_days_ago": 55, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "64.00"}, "invoice_number": "KC-1931", "buyer": {"name": "Leo Martins"}, "items": [{"item_name": "Tea Bowl Pair", "item_quantity": "1"}]}],
+      "messages": []
+    },
+    {
+      "dispute_id": "PP-D-27412", "create_time_days_ago": 33, "update_time_days_ago": 18,
+      "reason": "MERCHANDISE_OR_SERVICE_NOT_AS_DESCRIBED", "status": "RESOLVED",
+      "dispute_life_cycle_stage": "CHARGEBACK", "dispute_channel": "INTERNAL",
+      "dispute_amount": {"currency_code": "USD", "value": "45.00"},
+      "dispute_outcome": {"outcome_code": "RESOLVED_BUYER_FAVOUR"},
+      "disputed_transactions": [{"seller_transaction_id": "2ZX90456YH7713380", "create_time_days_ago": 48, "transaction_status": "REFUNDED", "gross_amount": {"currency_code": "USD", "value": "45.00"}, "invoice_number": "KC-1958", "buyer": {"name": "Amara Singh"}, "items": [{"item_name": "Hanging Planter", "item_quantity": "1"}]}],
+      "messages": []
+    }
+  ],
+  "mock_transactions": {
+    "8MC58172NR3394021": {"invoice_id": "KC-2041", "date_days_ago": 12, "amount": "86.00", "fee": "-3.26", "payer_email": "marcus.hale@example.com", "payer_name": "Marcus Hale", "ship_to": {"name": "Marcus Hale", "line1": "2210 Alder St", "city": "Eugene", "state": "OR", "postal_code": "97405", "country_code": "US"}, "related": []},
+    "2RT77310KX0916544": {"invoice_id": "KC-2056", "date_days_ago": 9, "amount": "142.50", "fee": "-5.27", "payer_email": "priya.nair@example.com", "payer_name": "Priya Nair", "ship_to": {"name": "Priya Nair", "line1": "88 Kingsley Ave, Apt 4", "city": "Oakland", "state": "CA", "postal_code": "94610", "country_code": "US"}, "related": []},
+    "6WJ93315HD2207468": {"invoice_id": "KC-2063", "date_days_ago": 9, "amount": "219.00", "fee": "-7.95", "payer_email": "d.okafor@example.com", "payer_name": "Daniel Okafor", "ship_to": {"name": "Daniel Okafor", "line1": "48 Birch Lane", "city": "Boise", "state": "ID", "postal_code": "83702", "country_code": "US"}, "related": []},
+    "3NV11804GC6650372": {"invoice_id": "KC-2038", "date_days_ago": 25, "amount": "54.00", "fee": "-2.37", "payer_email": "sofia.brandt@example.com", "payer_name": "Sofia Brandt", "ship_to": {"name": "Sofia Brandt", "line1": "1503 W Grand Ave", "city": "Chicago", "state": "IL", "postal_code": "60642", "country_code": "US"}, "related": [{"transaction_id": "4LS40972TB3318256", "event_code": "T1107", "description": "Payment refund", "amount": "-54.00", "status": "S", "date_days_ago": 6}]},
+    "9PC26651WE4410783": {"invoice_id": "KC-2070", "date_days_ago": 7, "amount": "98.00", "fee": "-3.70", "payer_email": "ethan.cole@example.com", "payer_name": "Ethan Cole", "ship_to": {"name": "Ethan Cole", "line1": "730 Pine St", "city": "Burlington", "state": "VT", "postal_code": "05401", "country_code": "US"}, "related": []},
+    "7AF55102MM8830194": {"invoice_id": "KC-2072", "date_days_ago": 11, "amount": "36.00", "fee": "-1.75", "payer_email": "hannah.lee@example.com", "payer_name": "Hannah Lee", "ship_to": {"name": "Hannah Lee", "line1": "4120 Fremont Ave N", "city": "Seattle", "state": "WA", "postal_code": "98103", "country_code": "US"}, "related": []},
+    "4GH83367RT1195530": {"invoice_id": "KC-2073", "date_days_ago": 10.98, "amount": "36.00", "fee": "-1.75", "payer_email": "hannah.lee@example.com", "payer_name": "Hannah Lee", "ship_to": {"name": "Grace Lee", "line1": "915 N Yakima Ave", "city": "Tacoma", "state": "WA", "postal_code": "98403", "country_code": "US"}, "related": []},
+    "1TB60318QP4472906": {"invoice_id": "KC-2077", "date_days_ago": 8, "amount": "64.00", "fee": "-2.72", "payer_email": "noah.fischer@example.com", "payer_name": "Noah Fischer", "ship_to": {"name": "Noah Fischer", "line1": "611 W 39th St", "city": "Kansas City", "state": "MO", "postal_code": "64111", "country_code": "US"}, "related": []},
+    "5YH27740LS9018833": {"invoice_id": "KC-2079", "date_days_ago": 0.4, "amount": "189.00", "fee": "-6.90", "payer_email": "gkim.home@example.com", "payer_name": "Grace Kim", "ship_to": {"name": "Grace Kim", "line1": "77 Lakeview Terrace", "city": "Madison", "state": "WI", "postal_code": "53703", "country_code": "US"}, "related": []},
+    "8KD15596ZW3307461": {"invoice_id": "KC-2080", "date_days_ago": 6, "amount": "98.00", "fee": "-3.70", "payer_email": "lucia.romero@example.com", "payer_name": "Lucía Romero", "ship_to": {"name": "Lucía Romero", "line1": "2150 SW 8th St, Apt 12", "city": "Miami", "state": "FL", "postal_code": "33135", "country_code": "US"}, "related": []}
+  },
+  "simulations": [
+    {
+      "label": "Package stuck in transit",
+      "order": {
+        "order_id": "KC-2081", "invoice_id": "KC-2081", "paypal_capture_id": "{capture_id}",
+        "placed_days_ago": 8,
+        "customer": {"name": "Olivia Martin", "email": "olivia.martin@example.com"},
+        "items": [{"sku": "KC-TEA-PAIR", "name": "Tea Bowl Pair", "qty": 1, "price": "58.00"}],
+        "shipping_cost": "6.00", "total": "64.00", "currency": "USD",
+        "shipping_address": {"name": "Olivia Martin", "line1": "302 Cherry Creek Dr", "city": "Denver", "state": "CO", "postal_code": "80209", "country_code": "US"},
+        "ip": "71.211.4.66", "device_id": "dev-0b47",
+        "fulfillment": {"carrier": "USPS", "tracking_number": "9400111202555842769999", "shipped_days_ago": 7},
+        "refunds": [], "internal_notes": ""
+      },
+      "tracking": {"9400111202555842769999": {"carrier": "USPS", "status": "IN_TRANSIT", "signed_by": "", "events": [
+        {"days_ago": 7, "location": "Portland, OR", "description": "Accepted at USPS Origin Facility"},
+        {"days_ago": 5, "location": "Denver, CO Distribution Center", "description": "Arrived at USPS Regional Facility"},
+        {"days_ago": 4.5, "location": "Denver, CO Distribution Center", "description": "In Transit, Arriving Late"}
+      ]}},
+      "helpdesk": [{"customer_email": "olivia.martin@example.com", "days_ago": 1, "from": "customer", "channel": "email", "subject": "Where is my order?", "body": "Hi, my tracking hasn't moved in 4 days. Is my order lost?"}],
+      "transaction": {"invoice_id": "KC-2081", "date_days_ago": 8, "amount": "64.00", "fee": "-2.72", "payer_email": "olivia.martin@example.com", "payer_name": "Olivia Martin", "ship_to": {"name": "Olivia Martin", "line1": "302 Cherry Creek Dr", "city": "Denver", "state": "CO", "postal_code": "80209", "country_code": "US"}, "related": []},
+      "dispute": {
+        "reason": "MERCHANDISE_OR_SERVICE_NOT_RECEIVED", "status": "WAITING_FOR_SELLER_RESPONSE",
+        "dispute_life_cycle_stage": "INQUIRY", "dispute_channel": "INTERNAL",
+        "dispute_amount": {"currency_code": "USD", "value": "64.00"},
+        "seller_response_due_date_in_days": 10,
+        "disputed_transactions": [{"seller_transaction_id": "{capture_id}", "create_time_days_ago": 8, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "64.00"}, "invoice_number": "KC-2081", "buyer": {"name": "Olivia Martin"}, "items": [{"item_name": "Tea Bowl Pair", "item_quantity": "1"}]}],
+        "messages": [{"posted_by": "BUYER", "time_posted_days_ago": 0, "content": "My order never arrived and the seller did not answer my email."}]
+      }
+    },
+    {
+      "label": "Stolen account, re-routed shipment",
+      "order": {
+        "order_id": "KC-2084", "invoice_id": "KC-2084", "paypal_capture_id": "{capture_id}",
+        "placed_days_ago": 6,
+        "customer": {"name": "Robert Klein", "email": "rklein.dayton@example.com"},
+        "items": [{"sku": "KC-PITCHER", "name": "Studio Pitcher", "qty": 1, "price": "175.00"}],
+        "shipping_cost": "14.00", "total": "189.00", "currency": "USD",
+        "shipping_address": {"name": "R. Klein c/o Global Parcel Fwd", "line1": "8200 NW 30th St, Suite 114", "city": "Miami", "state": "FL", "postal_code": "33122", "country_code": "US"},
+        "ip": "185.220.101.44", "device_id": "dev-ffe0",
+        "fulfillment": {"carrier": "UPS", "tracking_number": "1Z999AA10123452084", "shipped_days_ago": 5},
+        "refunds": [], "internal_notes": "Customer emailed asking to ship to a different address than the PayPal one; we updated it manually. Customer asked for rush shipping."
+      },
+      "tracking": {"1Z999AA10123452084": {"carrier": "UPS", "status": "DELIVERED", "signed_by": "", "events": [
+        {"days_ago": 5, "location": "Portland, OR", "description": "Origin scan"},
+        {"days_ago": 3, "location": "Miami, FL", "description": "Delivered - receiving dock"}
+      ]}},
+      "helpdesk": [{"customer_email": "rklein.dayton@example.com", "days_ago": 5.8, "from": "customer", "channel": "email", "subject": "Change shipping address URGENT", "body": "Please ship my pitcher to my cousin instead, he is in Miami: R. Klein c/o Global Parcel Fwd, 8200 NW 30th St Suite 114, Miami FL 33122. Please rush, thanks."}],
+      "transaction": {"invoice_id": "KC-2084", "date_days_ago": 6, "amount": "189.00", "fee": "-6.90", "payer_email": "rklein.dayton@example.com", "payer_name": "Robert Klein", "ship_to": {"name": "Robert Klein", "line1": "19 Orchard Rd", "city": "Dayton", "state": "OH", "postal_code": "45419", "country_code": "US"}, "related": []},
+      "dispute": {
+        "reason": "UNAUTHORISED", "status": "WAITING_FOR_SELLER_RESPONSE",
+        "dispute_life_cycle_stage": "CHARGEBACK", "dispute_channel": "EXTERNAL",
+        "dispute_amount": {"currency_code": "USD", "value": "189.00"},
+        "seller_response_due_date_in_days": 9,
+        "disputed_transactions": [{"seller_transaction_id": "{capture_id}", "create_time_days_ago": 6, "transaction_status": "COMPLETED", "gross_amount": {"currency_code": "USD", "value": "189.00"}, "invoice_number": "KC-2084", "buyer": {"name": "Robert Klein"}, "items": [{"item_name": "Studio Pitcher", "item_quantity": "1"}]}],
+        "messages": []
+      }
+    }
+  ]
+}

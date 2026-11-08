@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+data/state.json
+data/*.tmp
+.DS_Store
+DEMO_SCRIPT.md
+SUBMISSION.md
+*.log
+.vscode/
+.idea/
+
+

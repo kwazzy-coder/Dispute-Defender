@@ -1,0 +1,9 @@
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.1
+anthropic==2.2.0
+openai==3.37.0  # client for OpenAI-compatible providers (Gemini, Groq, ...), not OpenAI itself
+httpx==0.28.1
+fpdf2==2.8.9
+python-dotenv==1.2.4
+mcp==2.3.0
