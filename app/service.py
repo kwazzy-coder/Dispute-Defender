@@ -74,7 +74,16 @@ class Service:
     # ---- read model ------------------------------------------------------------------------
 
     async def disputes(self) -> list[dict]:
-        self._last_disputes = await self.provider.list_disputes()
+        real_disputes = await self.provider.list_disputes()
+        mock_disputes = store.state.get("mock_disputes", [])
+        seen = set()
+        combined = []
+        for d in real_disputes + mock_disputes:
+            did = d.get("dispute_id")
+            if did and did not in seen:
+                seen.add(did)
+                combined.append(d)
+        self._last_disputes = combined
         return self._last_disputes
 
     def row(self, d: dict) -> dict:
@@ -359,9 +368,11 @@ class Service:
             pass  # already logged and broadcast by analyze()
 
     async def simulate_new_dispute(self) -> dict:
-        if self.mode != "mock":
-            raise ValueError("Simulated disputes are only available in demo mode. In sandbox mode, open a dispute as a sandbox buyer.")
-        dispute = await self.provider.simulate_new_dispute()
+        if self.mode == "mock":
+            dispute = await self.provider.simulate_new_dispute()
+        else:
+            mock_prov = MockPayPal()
+            dispute = await mock_prov.simulate_new_dispute()
         # Exercise the same path a real PayPal webhook would take.
         await self.handle_webhook({"event_type": "CUSTOMER.DISPUTE.CREATED", "resource": {"dispute_id": dispute["dispute_id"]}})
         return dispute
